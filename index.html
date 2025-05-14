@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Romek-XD's portfolio showcasing web development and design projects.">
+  <title>Romek-XD | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --secondary: #6366f1;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --accent: #14b8a6;
+      --transition: all 0.3s ease;
+    }
+    body {
+      font-family: 'Sora', sans-serif;
+      @apply bg-gray-50 text-gray-900 transition-colors duration-500;
+    }
+    .dark body {
+      @apply bg-gray-900 text-gray-100;
+    }
+    .gradient-text {
+      @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    }
+    .card-hover {
+      @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl;
+    }
+    .animated-border {
+      @apply relative;
+    }
+    .animated-border::after {
+      content: '';
+      @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300;
+    }
+    .animated-border:hover::after {
+      @apply w-full;
+    }
+    .morph-bg {
+      @apply rounded-[30%] bg-gradient-to-br from-primary to-secondary animate-morph;
+    }
+    @keyframes morph {
+      0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+    }
+    .project-card:hover .project-img {
+      @apply scale-105;
+    }
+    .skill-progress {
+      @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+    }
+    .skill-progress-bar {
+      @apply h-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000;
+    }
+    .music-slider {
+      @apply flex overflow-x-auto snap-x snap-mandatory scrollbar-none;
+    }
+    .music-slider::-webkit-scrollbar {
+      display: none;
+    }
+    #particles-js {
+      @apply absolute inset-0 z-0;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="absolute inset-0"></div>
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold flex items-center">
+        <span class="text-primary">R</span>omek-XD
+      </a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#about" class="animated-border text-gray-600 dark:text-gray-300 hover:text-primary">About</a>
+        <a href="#projects" class="animated-border text-gray-600 dark:text-gray-300 hover:text-primary">Projects</a>
+        <a href="#skills" class="animated-border text-gray-600 dark:text-gray-300 hover:text-primary">Skills</a>
+        <a href="#music" class="animated-border text-gray-600 dark:text-gray-300 hover:text-primary">Music</a>
+        <a href="#contact" class="animated-border text-gray-600 dark:text-gray-300 hover:text-primary">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="text-gray-600 dark:text-gray-300">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 dark:text-gray-300">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden bg-white dark:bg-gray-800 shadow-md">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#about" class="block text-gray-600 dark:text-gray-300 hover:text-primary">About</a>
+        <a href="#projects" class="block text-gray-600 dark:text-gray-300 hover:text-primary">Projects</a>
+        <a href="#skills" class="block text-gray-600 dark:text-gray-300 hover:text-primary">Skills</a>
+        <a href="#music" class="block text-gray-600 dark:text-gray-300 hover:text-primary">Music</a>
+        <a href="#contact" class="block text-gray-600 dark:text-gray-300 hover:text-primary">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-10 pb-20">
+    <section class="max-w-6xl mx-auto px-4 mb-24" data-aos="fade-up">
+      <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+        <div class="w-full md:w-1/2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-6">
+            ✨ ROMEKTRICKS
+          </span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Welcome To My <span class="gradient-text">Portfolio</span> 🚀
+          </h1>
+          <p id="typing-text" class="text-gray-600 dark:text-gray-300 text-lg mb-8 max-w-xl">
+            I'm Romek-XD, a passionate developer crafting awesome digital experiences.
+          </p>
+          <div class="flex gap-4">
+            <a href="#projects" class="px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/80">See My Work</a>
+            <a href="#contact" class="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary">Get In Touch</a>
+          </div>
+          <div class="mt-8 flex space-x-4">
+            <a href="https://wa.me/919341378016" target="_blank" class="text-gray-500 dark:text-gray-300 hover:text-primary"><i class="fab fa-whatsapp text-xl"></i></a>
+            <a href="https://github.com/ROMEKTRICKS" target="_blank" class="text-gray-500 dark:text-gray-300 hover:text-primary"><i class="fab fa-github text-xl"></i></a>
+            <a href="https://t.me/ROMEKTRICKS" target="_blank" class="text-gray-500 dark:text-gray-300 hover:text-primary"><i class="fab fa-telegram text-xl"></i></a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 flex justify-center">
+          <div class="relative w-72 h-72 md:w-96 md:h-96" data-tilt>
+            <div class="absolute inset-4 morph-bg"></div>
+            <img src="https://files.catbox.moe/23chkz.jpeg" alt="Romek" class="absolute inset-8 rounded-full object-cover shadow-2xl z-10" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="max-w-6xl mx-auto px-4 py-24" data-aos="fade-up">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <div class="w-full md:w-1/2">
+          <img src="https://files.catbox.moe/23chkz.jpeg" alt="About Romek" class="w-full rounded-3xl shadow-xl" loading="lazy">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-3xl font-bold mb-6">About Me</h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            I'm a curious developer who loves turning ideas into reality through code and design. My journey began with a passion for creating seamless web experiences, and I’m always learning to push the boundaries of what’s possible.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300">
+            From crafting pixel-perfect UIs to building robust APIs, I thrive on solving problems and delivering value.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="max-w-6xl mx-auto px-4 py-24" data-aos="fade-up">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">My Projects</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          Explore my latest creations, each a unique blend of creativity and tech.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid"></div>
+    </section>
+
+    <section id="skills" class="max-w-6xl mx-auto px-4 py-24" data-aos="fade-up">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">My Skills</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          A mix of technical and creative skills to bring ideas to life.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg card-hover" data-tilt>
+          <h3 class="text-xl font-bold mb-4">Frontend</h3>
+          <div class="space-y-4">
+            <div>
+              <span class="text-sm font-medium">React</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[85%]"></div></div>
+            </div>
+            <div>
+              <span class="text-sm font-medium">Tailwind CSS</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[90%]"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg card-hover" data-tilt>
+          <h3 class="text-xl font-bold mb-4">Backend</h3>
+          <div class="space-y-4">
+            <div>
+              <span class="text-sm font-medium">Node.js</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[80%]"></div></div>
+            </div>
+            <div>
+              <span class="text-sm font-medium">Express</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[75%]"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg card-hover" data-tilt>
+          <h3 class="text-xl font-bold mb-4">UI/UX</h3>
+          <div class="space-y-4">
+            <div>
+              <span class="text-sm font-medium">Figma</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[70%]"></div></div>
+            </div>
+            <div>
+              <span class="text-sm font-medium">Prototyping</span>
+              <div class="skill-progress"><div class="skill-progress-bar w-[65%]"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music" class="max-w-6xl mx-auto px-4 py-24" data-aos="fade-up">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">My Favorite Music</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          Tracks that fuel my coding sessions and spark creativity.
+        </p>
+      </div>
+      <div class="relative">
+        <div class="music-slider" id="music-slider"></div>
+        <div class="flex justify-center mt-8 gap-4">
+          <button id="prev-music" class="p-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-primary hover:text-white">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="next-music" class="p-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-primary hover:text-white">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="max-w-4xl mx-auto px-4 py-24" data-aos="fade-up">
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-10">
+        <h2 class="text-2xl font-bold mb-6">Get In Touch</h2>
+        <form id="contact-form">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Name</label>
+              <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary" required>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary" required>
+            </div>
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary" required></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-lg bg-primary text-white hover:bg-primary/80">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-gray-400">© 2025 Romek-XD. Crafted with <i class="fas fa-heart text-red-500"></i>.</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="fixed bottom-6 right-6 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 hidden">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 15, speed: 400 });
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: "#0ea5e9" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 2, direction: "none", random: true }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }
+      }
+    });
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      themeToggle.querySelector('i').classList.toggle('fa-moon');
+      themeToggle.querySelector('i').classList.toggle('fa-sun');
+    });
+
+    const typingText = document.getElementById('typing-text');
+    const text = typingText.textContent;
+    typingText.textContent = '';
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        typingText.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 50);
+      }
+    }
+    type();
+
+    const projects = [
+      { title: "ShopTrendy", desc: "E-commerce platform with cart and Stripe checkout.", image: "https://via.placeholder.com/600x400?text=ShopTrendy", tags: ["React", "Node.js", "Stripe"], link: "#", github: "#", viewOnline: true },
+      { title: "TaskMaster", desc: "Task management app with drag-and-drop.", image: "https://via.placeholder.com/600x400?text=TaskMaster", tags: ["Vue.js", "Firebase"], link: "#", github: "#", viewOnline: true },
+      { title: "PortGenix", desc: "Portfolio generator for static sites.", image: "https://via.placeholder.com/600x400?text=PortGenix", tags: ["Next.js", "Vercel"], link: "#", github: "#", viewOnline: true },
+      { title: "WeatherWise", desc: "Real-time weather dashboard.", image: "https://via.placeholder.com/600x400?text=WeatherWise", tags: ["JavaScript", "API"], link: "#", github: "#", viewOnline: true },
+      { title: "ConnectSphere", desc: "Real-time chat app with Socket.io.", image: "https://via.placeholder.com/600x400?text=ConnectSphere", tags: ["Socket.io", "Express"], link: "#", github: "#", viewOnline: true }
+    ];
+
+    const projectGrid = document.getElementById('project-grid');
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'bg-white dark:bg-gray-800 rounded-xl shadow-lg project-card card-hover';
+      card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover project-img" loading="lazy">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">${project.desc}</p>
+          <div class="flex flex-wrap gap-2 mb-4">${project.tags.map(tag => `<span class="px-2 py-1 bg-primary/10 text-primary rounded">${tag}</span>`).join('')}</div>
+          <div class="flex space-x-4">
+            <a href="${project.link}" target="_blank" class="text-primary hover:underline flex items-center">Live <i class="fas fa-link ml-1"></i></a>
+            <a href="${project.github}" target="_blank" class="text-primary hover:underline flex items-center">GitHub <i class="fab fa-github ml-1"></i></a>
+          </div>
+        </div>
+      `;
+      projectGrid.appendChild(card);
+    });
+
+    const musicList = [
+      { title: "Kenangan Terindah", artist: "Mahen", cover: "https://files.catbox.moe/yga9sa.jpg", audio: "https://files.catbox.moe/hahkou.mp3" },
+      { title: "Calma", artist: "Calma", cover: "https://files.catbox.moe/0u8vvx.jpg", audio: "https://files.catbox.moe/75kypj.mp3" },
+      { title: "Be Alright", artist: "Dean Lewis", cover: "https://files.catbox.moe/ax879 eyesight.jpg", audio: "https://files.catbox.moe/8ibtmx.mp3" }
+    ];
+
+    const musicSlider = document.getElementById('music-slider');
+    let currentAudio = null;
+    musicList.forEach((music, index) => {
+      const card = document.createElement('div');
+      card.className = 'bg-white dark:bg-gray-800 rounded-xl shadow-lg min-w-[250px] snap-center';
+      card.innerHTML = `
+        <img src="${music.cover}" alt="${music.title}" class="w-full h-40 object-cover" loading="lazy">
+        <div class="p-4">
+          <h3 class="font-bold">${music.title}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">${music.artist}</p>
+          <button class="play-button mt-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-primary/80" data-index="${index}"><i class="fas fa-play mr-2"></i>Play</button>
+          <audio id="audio-${index}" src="${music.audio}"></audio>
+        </div>
+      `;
+      musicSlider.appendChild(card);
+    });
+
+    document.querySelectorAll('.play-button').forEach(button => {
+      button.addEventListener('click', function () {
+        const index = this.getAttribute('data-index');
+        const audio = document.getElementById(`audio-${index}`);
+        const icon = this.querySelector('i');
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          document.querySelectorAll('.play-button i').forEach(i => i.classList.replace('fa-pause', 'fa-play'));
+        }
+        if (audio.paused) {
+          audio.play();
+          icon.classList.replace('fa-play', 'fa-pause');
+          currentAudio = audio;
+        } else {
+          audio.pause();
+          icon.classList.replace('fa-pause', 'fa-play');
+          currentAudio = null;
+        }
+      });
+    });
+
+    document.getElementById('prev-music').addEventListener('click', () => musicSlider.scrollBy({ left: -300, behavior: 'smooth' }));
+    document.getElementById('next-music').addEventListener('click', () => musicSlider.scrollBy({ left: 300, behavior: 'smooth' }));
+
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      if (e.target.checkValidity()) {
+        alert('Message sent successfully!');
+        e.target.reset();
+      }
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('hidden', window.scrollY < 300);
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
